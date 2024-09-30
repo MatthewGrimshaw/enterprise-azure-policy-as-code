@@ -26,12 +26,12 @@
 
 param (
     [String]
-    $appName = "RootMgmtGroup-Write",
-    $repo = "MatthewGrimshaw/enterprise-azure-policy-as-code",
-    $orgName = 'MatthewGrimshaw',
-    $tennant = '44e2b0ad-2191-469a-aeaa-76f87ca1f198',
-    $groupName = 'MgmtGroup-Root-Write',
-    $gitHubPat = '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'
+    $appName,
+    $repo,
+    $orgName,
+    $tennant ,
+    $groupName,
+    $gitHubPat
 )
 
 Connect-AzAccount -Tenant $tennant
