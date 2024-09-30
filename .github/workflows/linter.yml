@@ -45,8 +45,10 @@
             
           - name: Run Pester tests
             run: |
+                Set-PSRepository psgallery -InstallationPolicy trusted
+                Install-Module -Name Pester -RequiredVersion 5.0.4 -Confirm:$false -Force
                 Invoke-Pester
-                shell: pwsh
+            shell: pwsh
 
       MSDO:
         # currently only windows latest is supported
