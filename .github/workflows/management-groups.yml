@@ -65,7 +65,7 @@ jobs:
         run: >
           az deployment tenant what-if
           --name management-groups
-          --template-file ${{ github.workspace }}/modules/${{ env.MODULE_NAME }}/resources.bicep
+          --template-file ${{ github.workspace }}/bicep/${{ env.MODULE_NAME }}/resources.bicep
           --parameters prefix=${{ env.ENVIRONMENT_SHORT_NAME }}
           --location ${{ env.LOCATION }}
 
@@ -91,7 +91,7 @@ jobs:
         run: >
           az deployment tenant validate
           --name management-groups
-          --template-file ${{ github.workspace }}/modules/${{ env.MODULE_NAME }}/resources.bicep
+          --template-file ${{ github.workspace }}/bicep/${{ env.MODULE_NAME }}/resources.bicep
           --parameters prefix=${{ env.ENVIRONMENT_SHORT_NAME }}
           --location ${{ env.LOCATION }}
 
@@ -99,7 +99,7 @@ jobs:
         run: >
           az deployment tenant what-if
           --name management-groups
-          --template-file ${{ github.workspace }}/modules/${{ env.MODULE_NAME }}/resources.bicep
+          --template-file ${{ github.workspace }}/bicep/${{ env.MODULE_NAME }}/resources.bicep
           --parameters prefix=${{ env.ENVIRONMENT_SHORT_NAME }}
           --location ${{ env.LOCATION }}
 
@@ -129,7 +129,7 @@ jobs:
         run: >
           az deployment tenant create
           --name management-groups
-          --template-file ${{ github.workspace }}/modules/${{ env.MODULE_NAME }}/resources.bicep
+          --template-file ${{ github.workspace }}/bicep/${{ env.MODULE_NAME }}/resources.bicep
           --parameters prefix=${{ env.ENVIRONMENT_SHORT_NAME }}
           --location ${{ env.LOCATION }}
 
@@ -159,6 +159,6 @@ jobs:
         run: >
           az deployment tenant create
           --name management-groups
-          --template-file ${{ github.workspace }}/modules/${{ env.MODULE_NAME }}/resources.bicep
+          --template-file ${{ github.workspace }}/bicep/${{ env.MODULE_NAME }}/resources.bicep
           --parameters prefix=${{ env.ENVIRONMENT_SHORT_NAME }}
           --location ${{ env.LOCATION }}
