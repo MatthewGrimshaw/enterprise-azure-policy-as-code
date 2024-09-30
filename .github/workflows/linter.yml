@@ -1,0 +1,73 @@
+---
+    name: Lint and Test Code Base
+    
+    on: # yamllint disable-line rule:truthy
+      push: null
+      pull_request: null
+    
+    permissions: {}
+    
+    jobs:
+      build:
+        name: Lint
+        runs-on: ubuntu-latest
+    
+        permissions:
+          contents: read
+          packages: read
+          # To report GitHub Actions status checks
+          statuses: write
+          id-token: write
+          actions: read
+          # Write access for security-events is only required for customers looking for MSDO results to appear in the codeQL security alerts tab on GitHub (Requires GHAS)
+          security-events: write
+    
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+            with:
+              # super-linter needs the full git history to get the
+              # list of files that changed across commits
+              fetch-depth: 0
+    
+          - name: Super-linter
+            uses: super-linter/super-linter@v7.1.0 # x-release-please-version
+            env:
+              # To report GitHub Actions status checks
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      test:
+        name: Test Code Base
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+            
+          - name: Run Pester tests
+            run: |
+                Invoke-Pester
+                shell: pwsh
+
+      MSDO:
+        # currently only windows latest is supported
+        runs-on: windows-latest
+
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-dotnet@v3
+            with:
+                dotnet-version: |
+                    5.0.x
+                    6.0.x
+          - name: Run Microsoft Security DevOps
+            uses: microsoft/security-devops-action@v1.6.0
+            id: msdo
+            with:
+                categories: IaC, secrets
+                tools: templateanalyzer
+
+
+          - name: Upload results to Security tab
+            uses: github/codeql-action/upload-sarif@v2
+            with:
+                sarif_file: ${{ steps.msdo.outputs.sarifFile }}
