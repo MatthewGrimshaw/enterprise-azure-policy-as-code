@@ -5,6 +5,7 @@ on:  # yamllint disable-line rule:truthy
     push:
         branches:
             - main
+            - Matthew
         paths:
             - .github/workflows/management-resources.yml
             - bicep/management-resources/**
