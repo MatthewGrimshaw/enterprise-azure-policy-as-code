@@ -31,7 +31,7 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: resourceLocation
 }
 
-module nestedDependencies 'dependencies.bicep' = {
+module nestedDependencies 'dependencies.test.bicep' = {
   scope: resourceGroup
   name: '${uniqueString(deployment().name, resourceLocation)}-nestedDependencies'
   params: {
@@ -44,7 +44,7 @@ module nestedDependencies 'dependencies.bicep' = {
 // Test Execution //
 // ============== //
 
-module testDeployment '../../../main.bicep' = {
+module testDeployment 'main.tests.bicep' = {
   name: '${uniqueString(deployment().name, resourceLocation)}-test-${serviceShort}'
   params: {
     location: resourceLocation
