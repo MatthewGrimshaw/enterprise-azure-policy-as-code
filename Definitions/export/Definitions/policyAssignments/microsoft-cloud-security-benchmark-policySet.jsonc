@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "displayName": "Microsoft cloud security benchmark"
+  },
+  "metadata": {
+    "assignedBy": "Security Center"
+  },
+  "children": [
+    {
+      "nodeName": "/child-0",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: bdcca325-332c-4f2a-8b9b-e7aa058e9d50)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "canary": [
+          "/subscriptions/bdcca325-332c-4f2a-8b9b-e7aa058e9d50"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-1",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 55db6928-5c3e-45b0-abbf-2031f3c19250)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/55db6928-5c3e-45b0-abbf-2031f3c19250"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-2",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 5f97c070-e06c-4244-a16d-2617ca320a45)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/5f97c070-e06c-4244-a16d-2617ca320a45"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-3",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 23a44dc8-3218-4e08-a9f8-b6451fd1095b)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/23a44dc8-3218-4e08-a9f8-b6451fd1095b"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-4",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 7a06440f-dea7-4668-8d49-5b7c4ebcf187)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/7a06440f-dea7-4668-8d49-5b7c4ebcf187"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-5",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 47269eb7-746b-4457-ba4a-11ec872dc8ae)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/47269eb7-746b-4457-ba4a-11ec872dc8ae"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-6",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: ab86a828-877d-4271-869a-d7f79b678aa4)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/ab86a828-877d-4271-869a-d7f79b678aa4"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-7",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 1f368e1f-4b2d-4f15-b99e-aa538f4fec27)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/1f368e1f-4b2d-4f15-b99e-aa538f4fec27"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-8",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: 0b77e2f6-4f3b-4c61-9653-f87a0bda7d4a)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/0b77e2f6-4f3b-4c61-9653-f87a0bda7d4a"
+        ]
+      }
+    },
+    {
+      "nodeName": "/child-9",
+      "assignment": {
+        "name": "SecurityCenterBuiltIn",
+        "displayName": "ASC Default (subscription: e7308aa5-d0a2-4818-9a3a-fdd142e1be88)",
+        "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+      },
+      "scope": {
+        "prod": [
+          "/subscriptions/e7308aa5-d0a2-4818-9a3a-fdd142e1be88"
+        ]
+      }
+    }
+  ]
+}

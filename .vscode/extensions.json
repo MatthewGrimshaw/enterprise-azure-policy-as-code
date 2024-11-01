@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "github.vscode-pull-request-github",
+        "davidanson.vscode-markdownlint",
+        "msazurermtools.azurerm-vscode-tools",
+        "ms-azure-devops.azure-pipelines",
+        "ms-azuretools.vscode-bicep",
+        "ms-vscode.powershell",
+        "azurepolicy.azurepolicyextension",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-danish",
+        "esbenp.prettier-vscode"
+    ]
+}

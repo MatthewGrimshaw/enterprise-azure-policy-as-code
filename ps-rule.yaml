@@ -1,0 +1,50 @@
+#
+# PSRule configuration
+#
+
+# Please see the documentation for all configuration options:
+# https://aka.ms/ps-rule-azure/options
+
+# Require a minimum version of PSRule for Azure.
+requires:
+  PSRule.Rules.Azure: '>=1.34.0' # (1)
+
+configuration:
+    # Enable expansion for Bicep source files.
+  AZURE_BICEP_FILE_EXPANSION: true
+
+  # Enable expansion of Azure Template files.
+  AZURE_PARAMETER_FILE_EXPANSION: true
+
+  # Set timeout for expanding Bicep source files.
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
+
+# Automatically use rules for Azure.
+include:
+  module:
+  - PSRule.Rules.Azure # (2)
+
+execution:
+  # Ignore warnings for resources and objects that don't have any rules.
+  notProcessedWarning: false
+
+# Ignore all files except .bicepparam files.
+input:
+  pathIgnore:
+  - '!**/*.bicepparam' # (4)
+  - '**/bicepconfig.json'
+  - '*.md'
+  - '*.png'
+  - '.vscode/'
+  - 'github/'
+  - 'Docs/'
+  - 'environments/'
+  - 'Schemas/'
+  - 'Scripts/'
+  - 'Scrips-Deprecated/'
+  - 'StarterKit/'
+  - 'Tmp/'
+    # Exclude Bicep module files
+  - 'bicep/**/*.bicep'
+    # Include samples/ test files from modules
+  - '!bicep/**/tests/*.bicep'

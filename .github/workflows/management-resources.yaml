@@ -1,0 +1,39 @@
+---
+name: Deploy Management Group Structure
+    
+on:  # yamllint disable-line rule:truthy
+    push:
+        branches:
+            - main
+        paths:
+            - .github/workflows/management-resources.yml
+            - bicep/management-resources/**
+    pull_request:
+        branches:
+            - main
+        paths:
+            - .github/workflows/management-resources.yml
+            - bicep/management-resources/**
+    workflow_dispatch:
+    
+permissions:
+      id-token: write
+      contents: read
+    
+env:
+      MODULE_NAME: management-resources
+      LOCATION: swedencentral
+
+jobs:
+  analyze:
+    name: Analyze repository with PS Rules
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Run PSRule analysis
+      uses: microsoft/ps-rule@v2.9.0 # (1)
+      with:
+        modules: PSRule.Rules.Azure # (2)

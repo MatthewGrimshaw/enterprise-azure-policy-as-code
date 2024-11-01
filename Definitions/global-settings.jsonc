@@ -1,0 +1,32 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
+    "pacOwnerId": "bb367745-4689-4f63-aa35-93de4ec53186", // Generate a guid using New-Guid and place it here
+    "pacEnvironments": [
+        {
+            "pacSelector": "canary",
+            "cloud": "AzureCloud",
+            "tenantId": "44e2b0ad-2191-469a-aeaa-76f87ca1f198",
+            "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/canary",
+            "desiredState": {
+                "strategy": "ownedOnly",
+                "keepDfcSecurityAssignments": true,
+                "doNotDisableDeprecatedPolicies": false
+            },
+            "skipResourceValidationForExemptions": false,
+            "managedIdentityLocation": "swedencentral"
+        },
+        {
+            "pacSelector": "prod",
+            "cloud": "AzureCloud",
+            "tenantId": "44e2b0ad-2191-469a-aeaa-76f87ca1f198",
+            "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/prod",
+            "desiredState": {
+                "strategy": "ownedOnly",
+                "keepDfcSecurityAssignments": true,
+                "doNotDisableDeprecatedPolicies": false
+            },
+            "skipResourceValidationForExemptions": false,
+            "managedIdentityLocation": "swedencentral"
+        }
+    ]
+}

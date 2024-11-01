@@ -1,0 +1,98 @@
+{
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Enforce recommended guardrails for Event Hub",
+    "description": "This policy initiative is a group of policies that ensures Event Hub is compliant per regulated Landing Zones.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Event Hub",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ]
+    },
+    "parameters": {
+      "eventHubAuthRules": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "eventHubNamespacesLocalAuth": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "eventHubNamespacesModifyLocalAuth": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      },
+      "eventHubNamespacesDoubleEncryption": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Deny-EH-Double-Encryption",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('eventHubNamespacesDoubleEncryption')]"
+          }
+        },
+        "policyDefinitionName": "836cd60e-87f3-4e6a-a27c-29d687f01a4c"
+      },
+      {
+        "policyDefinitionReferenceId": "Modify-EH-Local-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('eventHubNamespacesModifyLocalAuth')]"
+          }
+        },
+        "policyDefinitionName": "57f35901-8389-40bb-ac49-3ba4f86d889d"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-EH-Local-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('eventHubNamespacesLocalAuth')]"
+          }
+        },
+        "policyDefinitionName": "5d4e3c65-4873-47be-94f3-6f8b953a3598"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-EH-Auth-Rules",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('eventHubAuthRules')]"
+          }
+        },
+        "policyDefinitionName": "b278e460-7cfc-4451-8294-cccc40a940d7"
+      }
+    ],
+    "policyDefinitionGroups": null
+  },
+  "name": "Enforce-Guardrails-EventHub"
+}

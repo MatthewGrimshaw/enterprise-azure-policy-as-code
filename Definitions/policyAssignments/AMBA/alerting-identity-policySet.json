@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetName": "Alerting-Identity",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Identity",
+    "nonComplianceMessages": [
+      {
+        "policyDefinitionReferenceId": null,
+        "message": "Alerting must be deployed to Azure services."
+      }
+    ]
+  },
+  "assignment": {
+    "name": "Deploy-AMBA-Identity",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Identity",
+    "description": "Initiative to deploy AMBA alerts relevant to the ALZ Identity management group"
+  },
+  "metadata": {
+    "_deployed_by_amba": true
+  },
+  "parameters": {
+    "ALZMonitorResourceGroupTags": {
+      "Project": "amba-monitoring"
+    },
+    "KVCapacityAlertState": "true",
+    "KVCapacityWindowSize": "PT5M",
+    "activityKVDeletePolicyEffect": "deployIfNotExists",
+    "KVRequestWindowSize": "PT5M",
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "activityHSMsDeleteAlertState": "true",
+    "HSMsLatencyAvailabilityWindowSize": "PT5M",
+    "KvLatencyAvailabilityWindowSize": "PT5M",
+    "KvAvailabilityPolicyEffect": "disabled",
+    "KvLatencyAvailabilityAlertState": "true",
+    "KVCapacityEvaluationFrequency": "PT1M",
+    "KvAvailabilityAlertState": "true",
+    "KVRequestAlertSeverity": "2",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "Test",
+      "Dev",
+      "Sandbox"
+    ],
+    "KVRequestPolicyEffect": "disabled",
+    "HSMsAvailabilityEvaluationFrequency": "PT1M",
+    "ALZMonitorResourceGroupLocation": "eastus",
+    "KvLatencyAvailabilityThreshold": "1000",
+    "HSMsAvailabilityThreshold": "20",
+    "KVRequestEvaluationFrequency": "PT5M",
+    "ALZMonitorResourceGroupName": "rg-amba-monitoring-001",
+    "activityHSMsDeletePolicyEffect": "deployIfNotExists",
+    "KVAvailabilityThreshold": "20",
+    "HSMsLatencyAvailabilityThreshold": "1000",
+    "HSMsLatencyAvailabilityAlertState": "true",
+    "KVCapacityPolicyEffect": "disabled",
+    "KvLatencyAvailabilityEvaluationFrequency": "PT5M",
+    "KvAvailabilityWindowSize": "PT1M",
+    "HSMsAvailabilityAlertSeverity": "1",
+    "KvLatencyAvailabilityPolicyEffect": "disabled",
+    "KVRequestAlertState": "true",
+    "HSMsLatencyAvailabilityEvaluationFrequency": "PT5M",
+    "activityKVDeleteAlertState": "true",
+    "HSMsAvailabilityWindowSize": "PT1M",
+    "HSMsAvailabilityPolicyEffect": "disabled",
+    "HSMsLatencyAvailabilityAlertSeverity": "3",
+    "KvLatencyAvailabilityAlertSeverity": "3",
+    "HSMsAvailabilityAlertState": "true",
+    "HSMsLatencyAvailabilityPolicyEffect": "disabled",
+    "KvAvailabilityAlertSeverity": "1",
+    "KVCapacityThreshold": "75",
+    "KVCapacityAlertSeverity": "1",
+    "KvAvailabilityEvaluationFrequency": "PT1M"
+  },
+  "scope": {
+    "amba": [
+      "/providers/Microsoft.Management/managementGroups/amba-identity"
+    ]
+  }
+}

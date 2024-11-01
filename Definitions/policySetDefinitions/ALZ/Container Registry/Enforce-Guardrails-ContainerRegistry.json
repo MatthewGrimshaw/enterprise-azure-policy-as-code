@@ -1,0 +1,246 @@
+{
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Enforce recommended guardrails for Container Registry",
+    "description": "This policy initiative is a group of policies that ensures Container Apps is compliant per regulated Landing Zones.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Container Registry",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ]
+    },
+    "parameters": {
+      "containerRegistryUnrestrictedNetworkAccess": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryRepositoryToken": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryModifyRepositoryToken": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      },
+      "containerRegistryLocalAuth": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryModifyLocalAuth": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      },
+      "containerRegistryExports": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryAnAuth": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryModifyAnAuth": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      },
+      "containerRegistrySkuPrivateLink": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryArmAudience": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ]
+      },
+      "containerRegistryModifyArmAudience": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      },
+      "containerRegistryModifyPublicNetworkAccess": {
+        "type": "string",
+        "defaultValue": "Modify",
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ]
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Modify-ContainerRegistry-Local-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryModifyLocalAuth')]"
+          }
+        },
+        "policyDefinitionName": "79fdfe03-ffcb-4e55-b4d0-b925b8241759"
+      },
+      {
+        "policyDefinitionReferenceId": "Modify-ContainerRegistry-Repo-Token",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryModifyRepositoryToken')]"
+          }
+        },
+        "policyDefinitionName": "a9b426fe-8856-4945-8600-18c5dd1cca2a"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Arm-Audience",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryArmAudience')]"
+          }
+        },
+        "policyDefinitionName": "42781ec6-6127-4c30-bdfa-fb423a0047d3"
+      },
+      {
+        "policyDefinitionReferenceId": "Modify-ContainerRegistry-Arm-Audience",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryModifyArmAudience')]"
+          }
+        },
+        "policyDefinitionName": "785596ed-054f-41bc-aaec-7f3d0ba05725"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Sku-PrivateLink",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistrySkuPrivateLink')]"
+          }
+        },
+        "policyDefinitionName": "bd560fc0-3c69-498a-ae9f-aa8eb7de0e13"
+      },
+      {
+        "policyDefinitionReferenceId": "Modify-ContainerRegistry-Anonymous-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryModifyAnAuth')]"
+          }
+        },
+        "policyDefinitionName": "cced2946-b08a-44fe-9fd9-e4ed8a779897"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Anonymous-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryAnAuth')]"
+          }
+        },
+        "policyDefinitionName": "9f2dea28-e834-476c-99c5-3507b4728395"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Exports",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryExports')]"
+          }
+        },
+        "policyDefinitionName": "524b0254-c285-4903-bee6-bb8126cde579"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Local-Auth",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryLocalAuth')]"
+          }
+        },
+        "policyDefinitionName": "dc921057-6b28-4fbe-9b83-f7bec05db6c2"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Repo-Token",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryRepositoryToken')]"
+          }
+        },
+        "policyDefinitionName": "ff05e24e-195c-447e-b322-5e90c9f9f366"
+      },
+      {
+        "policyDefinitionReferenceId": "Deny-ContainerRegistry-Unrestricted-Network-Access",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryUnrestrictedNetworkAccess')]"
+          }
+        },
+        "policyDefinitionName": "d0793b48-0edc-4296-a390-4c75d1bdfd71"
+      },
+      {
+        "policyDefinitionReferenceId": "Modify-ContainerRegistry-Public-Network-Access",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerRegistryModifyPublicNetworkAccess')]"
+          }
+        },
+        "policyDefinitionName": "a3701552-92ea-433e-9d17-33b7f1208fc9"
+      }
+    ],
+    "policyDefinitionGroups": null
+  },
+  "name": "Enforce-Guardrails-ContainerRegistry"
+}
