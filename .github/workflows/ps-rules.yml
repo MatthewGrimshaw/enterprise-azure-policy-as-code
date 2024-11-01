@@ -4,27 +4,12 @@ name: Deploy Management Group Structure
 on:  # yamllint disable-line rule:truthy
     push:
         branches:
-            - main
-            - Matthew
-        paths:
-            - .github/workflows/management-resources.yml
-            - bicep/management-resources/**
+          - '**'        # matches every branch
     pull_request:
         branches:
-            - main
-        paths:
-            - .github/workflows/management-resources.yml
-            - bicep/management-resources/**
+            - '**'       # matches every branch
     workflow_dispatch:
     
-permissions:
-      id-token: write
-      contents: read
-    
-env:
-      MODULE_NAME: management-resources
-      LOCATION: swedencentral
-
 jobs:
   analyze:
     name: Analyze repository with PS Rules
