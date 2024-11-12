@@ -2,7 +2,7 @@
 param location string
 
 @description('Required. The name of the Managed Identity to create.')
-param managedIdentityName string
+param managedIdentityName string = 'psrule_managedIdentity'
 
 resource managedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' = {
   name: managedIdentityName
