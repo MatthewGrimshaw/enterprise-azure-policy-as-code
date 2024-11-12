@@ -5,7 +5,7 @@ metadata owner = 'Azure/module-maintainers'
 targetScope = 'subscription'
 
 @description('Required. The name of the Resource Group.')
-param name string
+param name string = 'myResourceGroup'
 
 @description('Optional. Location of the Resource Group. It uses the deployment\'s location when not provided.')
 param location string = deployment().location
