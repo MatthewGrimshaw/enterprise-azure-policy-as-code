@@ -17,7 +17,11 @@ param lock lockType
 param roleAssignments roleAssignmentType
 
 @description('Optional. Tags of the storage account resource.')
-param tags object?
+param tags object = {
+  'hidden-title': 'This is visible in the resource name'
+  Environment: 'Non-Prod'
+  Role: 'DeploymentValidation'
+}
 
 @description('Optional. Enable/Disable usage telemetry for module.')
 param enableTelemetry bool = true
