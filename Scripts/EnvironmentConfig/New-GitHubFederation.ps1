@@ -67,7 +67,7 @@ $param = @{
     securityEnabled=$true
     mailNickname=$groupName
    }
-   
+
 $entraIDGroup = New-MgGroup @param
 
 # add user to group
@@ -91,10 +91,10 @@ $authenticationToken = [System.Convert]::ToBase64String([Text.Encoding]::ASCII.G
         "Content-Type"  = "application/json"
     }
 
-# Get Repo Public Key 
+# Get Repo Public Key
 
 $publicKeyAPIUri = "https://api.github.com/repos/$($repo)/actions/secrets/public-key"
-$repoPublicKey = Invoke-RestMethod -Method get -Uri $publicKeyAPIUri -Headers $headers 
+$repoPublicKey = Invoke-RestMethod -Method get -Uri $publicKeyAPIUri -Headers $headers
 
 
 #Get the values for clientId, subscriptionId, and tenantId to use later in your GitHub Actions workflow.
@@ -107,7 +107,7 @@ $tenantId = (Get-AzContext).Subscription.TenantId
 $encClientId = ConvertTo-SodiumEncryptedString -PublicKey $repoPublicKey.key -Text $clientId
 $enctenantId = ConvertTo-SodiumEncryptedString -PublicKey $repoPublicKey.key -Text  $tenantId
 
-# create Repository secrets 
+# create Repository secrets
 $data_encClientId = @{
     encrypted_value = $encClientId
     key_id = $repoPublicKey.key_id
@@ -143,22 +143,19 @@ foreach ($environment in $environments) {
     $envPublicKey = Invoke-RestMethod -Method get -Uri $envPublicKeyAPIUri -Headers $headers
     $encSubscritpionId = ConvertTo-SodiumEncryptedString -PublicKey $envPublicKey.key -Text $subscriptionId
 
-    If($environment -eq "Production"){        
-        $envSubIdAPIUri = "https://api.github.com/repos/$($repo)/environments/$($environment)/secrets/AZURE_MANAGEMENT_SUBSCRIPTION_ID"        
+    If($environment -eq "Production"){
+        $envSubIdAPIUri = "https://api.github.com/repos/$($repo)/environments/$($environment)/secrets/AZURE_MANAGEMENT_SUBSCRIPTION_ID"
     }
 
     If($environment -eq "Canary"){
-        $envSubIdAPIUri = "https://api.github.com/repos/$($repo)/environments/$($environment)/secrets/AZURE_MANAGEMENT_SUBSCRIPTION_ID"  
+        $envSubIdAPIUri = "https://api.github.com/repos/$($repo)/environments/$($environment)/secrets/AZURE_MANAGEMENT_SUBSCRIPTION_ID"
     }
 
     $envdata = @{
-        encrypted_value = $encSubscritpionId 
+        encrypted_value = $encSubscritpionId
         key_id = $envPublicKey.key_id
     }
     $envjson = $envdata | ConvertTo-Json
     Invoke-RestMethod -Method PUT -Uri $envSubIdAPIUri  -Headers $headers -body $envjson
 
 }
-
-
-
